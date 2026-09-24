@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-progress",
+  "type": "registry:component",
+  "title": "ScrollProgress",
+  "description": "Page scroll progress bar using transform scale and semantic tokens.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/scroll-progress/scroll-progress.tsx",
+      "type": "registry:component",
+      "target": "components/scroll-progress.tsx",
+      "content": "\"use client\";\n\nimport { shouldAnimateMotion } from \"./motion-policy\";\nimport { motion, useReducedMotion, useScroll } from \"motion/react\";\nimport type { RefObject } from \"react\";\n\nfunction cn(...inputs: Array<string | undefined | false | null>) {\n  return inputs.filter(Boolean).join(\" \");\n}\n\nexport type ScrollProgressAxis = \"x\" | \"y\";\n\nexport type ScrollProgressProps = {\n  className?: string;\n  axis?: ScrollProgressAxis;\n  /**\n   * @experimental Container-scoped progress. Prefer page scope.\n   * Requires `containerRef` when set to `container`.\n   */\n  scope?: \"page\" | \"container\";\n  /**\n   * @experimental Scroll target when `scope` is `container`.\n   */\n  containerRef?: RefObject<HTMLElement | null>;\n};\n\nexport function ScrollProgress({\n  className,\n  axis = \"x\",\n  scope = \"page\",\n  containerRef,\n}: ScrollProgressProps) {\n  const reduce = useReducedMotion();\n  const { scrollYProgress } = useScroll(\n    scope === \"container\"\n      ? {\n          target: containerRef,\n          offset: [\"start start\", \"end end\"],\n        }\n      : undefined,\n  );\n  const progress = scrollYProgress;\n  const isVertical = axis === \"y\";\n  const reduced = !shouldAnimateMotion(reduce);\n\n  return (\n    <motion.div\n      className={cn(\n        \"pointer-events-none bg-accent\",\n        isVertical\n          ? \"fixed top-0 left-0 h-full w-0.5 origin-top\"\n          : \"fixed top-0 left-0 h-0.5 w-full origin-left\",\n        \"z-[var(--z-sticky)]\",\n        className,\n      )}\n      style={\n        isVertical\n          ? { scaleY: reduced ? 1 : progress }\n          : { scaleX: reduced ? 1 : progress }\n      }\n    />\n  );\n}\n"
+    },
+    {
+      "path": "registry/default/scroll-progress/motion-policy.ts",
+      "type": "registry:lib",
+      "target": "components/motion-policy.ts",
+      "content": "export const FINE_POINTER_QUERY = \"(pointer: fine) and (hover: hover)\";\n\nexport function shouldAnimateMotion(\n  reduce: boolean | null | undefined,\n): boolean {\n  return !reduce;\n}\n\nexport function shouldEnableParallax(options: {\n  reduce: boolean | null | undefined;\n  viewportWidth: number | null;\n  disableBelow?: number;\n}): boolean {\n  if (!shouldAnimateMotion(options.reduce)) {\n    return false;\n  }\n  if (\n    options.disableBelow != null &&\n    options.viewportWidth != null &&\n    options.viewportWidth < options.disableBelow\n  ) {\n    return false;\n  }\n  return true;\n}\n\nexport function shouldEnableMagnetic(options: {\n  reduce: boolean | null | undefined;\n  finePointer: boolean;\n  pointerType?: string;\n}): boolean {\n  if (!shouldAnimateMotion(options.reduce)) {\n    return false;\n  }\n  if (!options.finePointer) {\n    return false;\n  }\n  if (\n    options.pointerType &&\n    options.pointerType !== \"mouse\" &&\n    options.pointerType !== \"pen\"\n  ) {\n    return false;\n  }\n  return true;\n}\n\nexport function shouldEnablePointerAccent(options: {\n  enabled: boolean;\n  reduce: boolean | null | undefined;\n  finePointer: boolean;\n  pointerType?: string;\n}): boolean {\n  if (!options.enabled) {\n    return false;\n  }\n  return shouldEnableMagnetic({\n    reduce: options.reduce,\n    finePointer: options.finePointer,\n    pointerType: options.pointerType,\n  });\n}\n"
+    }
+  ]
+}

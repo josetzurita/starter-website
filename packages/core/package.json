@@ -1,0 +1,25 @@
+{
+  "name": "@cds/core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@cds/eslint-config": "workspace:*",
+    "@cds/typescript-config": "workspace:*",
+    "eslint": "^9.22.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

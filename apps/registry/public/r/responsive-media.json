@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "responsive-media",
+  "type": "registry:component",
+  "title": "Responsive media",
+  "description": "Unopinionated image, video, frame, and intrinsic-ratio media primitives.",
+  "files": [
+    {
+      "path": "registry/default/responsive-media/responsive-image.tsx",
+      "type": "registry:component",
+      "target": "components/responsive-image.tsx",
+      "content": "\"use client\";\n\nfunction cn(...inputs: Array<string | undefined | false | null>) {\n  return inputs.filter(Boolean).join(\" \");\n}\n\nimport Image from \"next/image\";\nimport type { ImageProps } from \"next/image\";\nimport { useState, type ReactNode } from \"react\";\n\nexport type ResponsiveImageProps = Omit<ImageProps, \"alt\"> & {\n  alt: string;\n  fallback?: ReactNode;\n};\n\nexport function ResponsiveImage({\n  alt,\n  sizes,\n  priority,\n  loading,\n  fallback,\n  className,\n  onError,\n  ...props\n}: ResponsiveImageProps) {\n  const [failed, setFailed] = useState(false);\n  if (failed && fallback) {\n    return <>{fallback}</>;\n  }\n  return (\n    <Image\n      alt={alt}\n      sizes={sizes}\n      priority={priority}\n      loading={priority ? undefined : loading ?? \"lazy\"}\n      className={cn(\"h-auto max-w-full\", className)}\n      onError={(event) => {\n        setFailed(true);\n        onError?.(event);\n      }}\n      {...props}\n    />\n  );\n}\n"
+    },
+    {
+      "path": "registry/default/responsive-media/responsive-video.tsx",
+      "type": "registry:component",
+      "target": "components/responsive-video.tsx",
+      "content": "\"use client\";\n\nfunction cn(...inputs: Array<string | undefined | false | null>) {\n  return inputs.filter(Boolean).join(\" \");\n}\n\nimport { useReducedMotion } from \"motion/react\";\nimport { useEffect, useRef, useState, type ReactNode, type VideoHTMLAttributes } from \"react\";\n\nexport type ResponsiveVideoProps = VideoHTMLAttributes<HTMLVideoElement> & {\n  fallback?: ReactNode;\n};\n\nexport function ResponsiveVideo({\n  className,\n  poster,\n  autoPlay,\n  muted,\n  playsInline = true,\n  controls = true,\n  fallback,\n  onError,\n  children,\n  ...props\n}: ResponsiveVideoProps) {\n  const reduce = Boolean(useReducedMotion());\n  const ref = useRef<HTMLVideoElement>(null);\n  const [failed, setFailed] = useState(false);\n  const safeAutoPlay = Boolean(autoPlay) && Boolean(muted) && !reduce;\n\n  useEffect(() => {\n    const node = ref.current;\n    if (!node) {\n      return;\n    }\n    if (reduce) {\n      node.pause();\n      return;\n    }\n    if (safeAutoPlay) {\n      void node.play().catch(() => undefined);\n    }\n  }, [reduce, safeAutoPlay]);\n\n  if (failed && fallback) {\n    return <>{fallback}</>;\n  }\n\n  return (\n    <video\n      ref={ref}\n      className={cn(\"h-auto max-w-full\", className)}\n      poster={poster}\n      autoPlay={safeAutoPlay}\n      muted={muted ?? safeAutoPlay}\n      playsInline={playsInline}\n      controls={controls}\n      preload={safeAutoPlay ? \"metadata\" : \"none\"}\n      onError={(event) => {\n        setFailed(true);\n        onError?.(event);\n      }}\n      {...props}\n    >\n      {children}\n    </video>\n  );\n}\n"
+    },
+    {
+      "path": "registry/default/responsive-media/media-frame.tsx",
+      "type": "registry:component",
+      "target": "components/media-frame.tsx",
+      "content": "function cn(...inputs: Array<string | undefined | false | null>) {\n  return inputs.filter(Boolean).join(\" \");\n}\n\nimport type { HTMLAttributes } from \"react\";\n\nexport function MediaFrame({\n  className,\n  children,\n  ...props\n}: HTMLAttributes<HTMLElement>) {\n  return (\n    <figure className={cn(\"relative overflow-hidden\", className)} {...props}>\n      {children}\n    </figure>\n  );\n}\n"
+    },
+    {
+      "path": "registry/default/responsive-media/aspect-media.tsx",
+      "type": "registry:component",
+      "target": "components/aspect-media.tsx",
+      "content": "function cn(...inputs: Array<string | undefined | false | null>) {\n  return inputs.filter(Boolean).join(\" \");\n}\n\nimport type { HTMLAttributes } from \"react\";\n\nexport function AspectMedia({\n  width,\n  height,\n  className,\n  children,\n  ...props\n}: HTMLAttributes<HTMLDivElement> & {\n  width: number;\n  height: number;\n}) {\n  return (\n    <div\n      className={cn(\"relative w-full overflow-hidden\", className)}\n      style={{ aspectRatio: `${String(width)} / ${String(height)}` }}\n      {...props}\n    >\n      <div className=\"absolute inset-0\">{children}</div>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

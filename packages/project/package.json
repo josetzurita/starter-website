@@ -1,0 +1,46 @@
+{
+  "name": "@cds/project",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./create-site": "./src/create-site/create-site.ts"
+  },
+  "bin": {
+    "cds-create-site": "./src/create-site/cli.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "create-site": "tsx src/create-site/run.ts"
+  },
+  "dependencies": {
+    "@cds/core": "workspace:*",
+    "@cds/motion": "workspace:*",
+    "@phosphor-icons/react": "^2.1.10",
+    "@radix-ui/react-dialog": "^1.1.15"
+  },
+  "peerDependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@cds/eslint-config": "workspace:*",
+    "@cds/typescript-config": "workspace:*",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "eslint": "^9.22.0",
+    "jsdom": "^26.1.0",
+    "next": "^15.5.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tsx": "^4.20.5",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

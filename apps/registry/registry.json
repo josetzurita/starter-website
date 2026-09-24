@@ -1,0 +1,1372 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "cds",
+  "homepage": "http://localhost:3001",
+  "items": [
+    {
+      "name": "reveal",
+      "type": "registry:component",
+      "title": "Reveal",
+      "description": "Motion whileInView entrance that honors prefers-reduced-motion. Opacity and transform only.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/reveal/reveal.tsx",
+          "type": "registry:component",
+          "target": "components/reveal.tsx"
+        },
+        {
+          "path": "registry/default/reveal/resolve-tween.ts",
+          "type": "registry:lib",
+          "target": "components/resolve-tween.ts"
+        },
+        {
+          "path": "registry/default/reveal/use-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/use-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/reveal/profiles/types.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/types.ts"
+        },
+        {
+          "path": "registry/default/reveal/profiles/create-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/create-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/reveal/profiles/house.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/house.ts"
+        }
+      ]
+    },
+    {
+      "name": "stagger",
+      "type": "registry:component",
+      "title": "Stagger",
+      "description": "Motion variants stagger for sibling items. Opacity and transform only.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/stagger/stagger.tsx",
+          "type": "registry:component",
+          "target": "components/stagger.tsx"
+        },
+        {
+          "path": "registry/default/stagger/clamp.ts",
+          "type": "registry:lib",
+          "target": "components/clamp.ts"
+        },
+        {
+          "path": "registry/default/stagger/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        },
+        {
+          "path": "registry/default/stagger/resolve-tween.ts",
+          "type": "registry:lib",
+          "target": "components/resolve-tween.ts"
+        },
+        {
+          "path": "registry/default/stagger/use-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/use-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/stagger/profiles/types.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/types.ts"
+        },
+        {
+          "path": "registry/default/stagger/profiles/create-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/create-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/stagger/profiles/house.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/house.ts"
+        }
+      ]
+    },
+    {
+      "name": "text-reveal",
+      "type": "registry:component",
+      "title": "TextReveal",
+      "description": "Word or explicit-line text entrance with one accessible string. Opacity and transform only.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/text-reveal/text-reveal.tsx",
+          "type": "registry:component",
+          "target": "components/text-reveal.tsx"
+        },
+        {
+          "path": "registry/default/text-reveal/clamp.ts",
+          "type": "registry:lib",
+          "target": "components/clamp.ts"
+        },
+        {
+          "path": "registry/default/text-reveal/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        },
+        {
+          "path": "registry/default/text-reveal/text-split.ts",
+          "type": "registry:lib",
+          "target": "components/text-split.ts"
+        },
+        {
+          "path": "registry/default/text-reveal/resolve-tween.ts",
+          "type": "registry:lib",
+          "target": "components/resolve-tween.ts"
+        },
+        {
+          "path": "registry/default/text-reveal/use-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/use-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/text-reveal/profiles/types.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/types.ts"
+        },
+        {
+          "path": "registry/default/text-reveal/profiles/create-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/create-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/text-reveal/profiles/house.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/house.ts"
+        }
+      ]
+    },
+    {
+      "name": "parallax",
+      "type": "registry:component",
+      "title": "Parallax",
+      "description": "Clamped scroll parallax via useScroll and useTransform. Motion owns transform.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/parallax/parallax.tsx",
+          "type": "registry:component",
+          "target": "components/parallax.tsx"
+        },
+        {
+          "path": "registry/default/parallax/clamp.ts",
+          "type": "registry:lib",
+          "target": "components/clamp.ts"
+        },
+        {
+          "path": "registry/default/parallax/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        }
+      ]
+    },
+    {
+      "name": "magnetic",
+      "type": "registry:component",
+      "title": "Magnetic",
+      "description": "Experimental. Fine-pointer magnetic offset using motion values. Not part of motion-foundations.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/magnetic/magnetic.tsx",
+          "type": "registry:component",
+          "target": "components/magnetic.tsx"
+        },
+        {
+          "path": "registry/default/magnetic/clamp.ts",
+          "type": "registry:lib",
+          "target": "components/clamp.ts"
+        },
+        {
+          "path": "registry/default/magnetic/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        }
+      ]
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:component",
+      "title": "ScrollProgress",
+      "description": "Page scroll progress bar using transform scale and semantic tokens.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/scroll-progress/scroll-progress.tsx",
+          "type": "registry:component",
+          "target": "components/scroll-progress.tsx"
+        },
+        {
+          "path": "registry/default/scroll-progress/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        }
+      ]
+    },
+    {
+      "name": "image-reveal",
+      "type": "registry:component",
+      "title": "ImageReveal",
+      "description": "Overflow clip image entrance with inner transform. No fixed radius or aspect ratio.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/image-reveal/image-reveal.tsx",
+          "type": "registry:component",
+          "target": "components/image-reveal.tsx"
+        },
+        {
+          "path": "registry/default/image-reveal/clamp.ts",
+          "type": "registry:lib",
+          "target": "components/clamp.ts"
+        },
+        {
+          "path": "registry/default/image-reveal/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        },
+        {
+          "path": "registry/default/image-reveal/resolve-tween.ts",
+          "type": "registry:lib",
+          "target": "components/resolve-tween.ts"
+        },
+        {
+          "path": "registry/default/image-reveal/use-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/use-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/image-reveal/profiles/types.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/types.ts"
+        },
+        {
+          "path": "registry/default/image-reveal/profiles/create-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/create-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/image-reveal/profiles/house.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/house.ts"
+        }
+      ]
+    },
+    {
+      "name": "smooth-scroll",
+      "type": "registry:component",
+      "title": "SmoothScroll",
+      "description": "App-level Lenis smooth scroll driven by the GSAP ticker. One instance. Native on touch and reduced motion.",
+      "dependencies": [
+        "lenis",
+        "gsap",
+        "@gsap/react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/smooth-scroll/smooth-scroll-provider.tsx",
+          "type": "registry:component",
+          "target": "components/smooth-scroll-provider.tsx"
+        },
+        {
+          "path": "registry/default/smooth-scroll/use-smooth-scroll.ts",
+          "type": "registry:hook",
+          "target": "components/use-smooth-scroll.ts"
+        },
+        {
+          "path": "registry/default/smooth-scroll/smooth-scroll-options.ts",
+          "type": "registry:lib",
+          "target": "components/smooth-scroll-options.ts"
+        },
+        {
+          "path": "registry/default/smooth-scroll/smooth-scroll-sync.ts",
+          "type": "registry:lib",
+          "target": "components/smooth-scroll-sync.ts"
+        },
+        {
+          "path": "registry/default/smooth-scroll/gsap.ts",
+          "type": "registry:lib",
+          "target": "components/gsap.ts"
+        },
+        {
+          "path": "registry/default/smooth-scroll/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        },
+        {
+          "path": "registry/default/smooth-scroll/reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/reduced-motion.ts"
+        }
+      ]
+    },
+    {
+      "name": "motion-profile",
+      "type": "registry:component",
+      "title": "Motion profile",
+      "description": "Intent-based motion profile, house defaults, project overrides, and semantic GSAP CustomEase names.",
+      "dependencies": [
+        "gsap"
+      ],
+      "files": [
+        {
+          "path": "registry/default/motion-profile/motion-profile-provider.tsx",
+          "type": "registry:component",
+          "target": "components/motion-profile-provider.tsx"
+        },
+        {
+          "path": "registry/default/motion-profile/use-motion-profile.ts",
+          "type": "registry:hook",
+          "target": "components/use-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/motion-profile/register-motion-eases.ts",
+          "type": "registry:lib",
+          "target": "components/register-motion-eases.ts"
+        },
+        {
+          "path": "registry/default/motion-profile/export-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/export-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/motion-profile/gsap-ease-names.ts",
+          "type": "registry:lib",
+          "target": "components/gsap-ease-names.ts"
+        },
+        {
+          "path": "registry/default/motion-profile/resolve-tween.ts",
+          "type": "registry:lib",
+          "target": "components/resolve-tween.ts"
+        },
+        {
+          "path": "registry/default/motion-profile/profiles/types.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/types.ts"
+        },
+        {
+          "path": "registry/default/motion-profile/profiles/house.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/house.ts"
+        },
+        {
+          "path": "registry/default/motion-profile/profiles/create-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/create-motion-profile.ts"
+        }
+      ]
+    },
+    {
+      "name": "pointer-accent",
+      "type": "registry:component",
+      "title": "PointerAccent",
+      "description": "Optional GSAP pointer follower. Native cursor stays visible. Disabled on touch, coarse pointers, and reduced motion. Not a custom cursor.",
+      "dependencies": [
+        "gsap",
+        "@gsap/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/pointer-accent/pointer-accent.tsx",
+          "type": "registry:component",
+          "target": "components/pointer-accent.tsx"
+        },
+        {
+          "path": "registry/default/pointer-accent/pointer-accent-options.ts",
+          "type": "registry:lib",
+          "target": "components/pointer-accent-options.ts"
+        },
+        {
+          "path": "registry/default/pointer-accent/clamp.ts",
+          "type": "registry:lib",
+          "target": "components/clamp.ts"
+        },
+        {
+          "path": "registry/default/pointer-accent/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        },
+        {
+          "path": "registry/default/pointer-accent/gsap.ts",
+          "type": "registry:lib",
+          "target": "components/gsap.ts"
+        },
+        {
+          "path": "registry/default/pointer-accent/gsap-ease-names.ts",
+          "type": "registry:lib",
+          "target": "components/gsap-ease-names.ts"
+        },
+        {
+          "path": "registry/default/pointer-accent/use-motion-profile.ts",
+          "type": "registry:hook",
+          "target": "components/use-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/pointer-accent/resolve-tween.ts",
+          "type": "registry:lib",
+          "target": "components/resolve-tween.ts"
+        },
+        {
+          "path": "registry/default/pointer-accent/profiles/types.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/types.ts"
+        },
+        {
+          "path": "registry/default/pointer-accent/profiles/create-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/create-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/pointer-accent/profiles/house.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/house.ts"
+        }
+      ]
+    },
+    {
+      "name": "motion-foundations",
+      "type": "registry:block",
+      "title": "Motion foundations",
+      "description": "Installs Phase 2 Motion primitives, smooth-scroll, and motion-profile. Magnetic and Pointer Accent are excluded. The easing workbench is lab-only.",
+      "dependencies": [
+        "motion",
+        "lenis",
+        "gsap",
+        "@gsap/react"
+      ],
+      "files": [
+        {
+          "path": "registry/default/stagger/stagger.tsx",
+          "type": "registry:component",
+          "target": "components/stagger.tsx"
+        },
+        {
+          "path": "registry/default/text-reveal/text-reveal.tsx",
+          "type": "registry:component",
+          "target": "components/text-reveal.tsx"
+        },
+        {
+          "path": "registry/default/parallax/parallax.tsx",
+          "type": "registry:component",
+          "target": "components/parallax.tsx"
+        },
+        {
+          "path": "registry/default/scroll-progress/scroll-progress.tsx",
+          "type": "registry:component",
+          "target": "components/scroll-progress.tsx"
+        },
+        {
+          "path": "registry/default/image-reveal/image-reveal.tsx",
+          "type": "registry:component",
+          "target": "components/image-reveal.tsx"
+        },
+        {
+          "path": "registry/default/smooth-scroll/smooth-scroll-provider.tsx",
+          "type": "registry:component",
+          "target": "components/smooth-scroll-provider.tsx"
+        },
+        {
+          "path": "registry/default/smooth-scroll/use-smooth-scroll.ts",
+          "type": "registry:hook",
+          "target": "components/use-smooth-scroll.ts"
+        },
+        {
+          "path": "registry/default/smooth-scroll/smooth-scroll-options.ts",
+          "type": "registry:lib",
+          "target": "components/smooth-scroll-options.ts"
+        },
+        {
+          "path": "registry/default/smooth-scroll/smooth-scroll-sync.ts",
+          "type": "registry:lib",
+          "target": "components/smooth-scroll-sync.ts"
+        },
+        {
+          "path": "registry/default/smooth-scroll/gsap.ts",
+          "type": "registry:lib",
+          "target": "components/gsap.ts"
+        },
+        {
+          "path": "registry/default/stagger/clamp.ts",
+          "type": "registry:lib",
+          "target": "components/clamp.ts"
+        },
+        {
+          "path": "registry/default/stagger/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        },
+        {
+          "path": "registry/default/text-reveal/text-split.ts",
+          "type": "registry:lib",
+          "target": "components/text-split.ts"
+        },
+        {
+          "path": "registry/default/smooth-scroll/reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/reduced-motion.ts"
+        },
+        {
+          "path": "registry/default/stagger/resolve-tween.ts",
+          "type": "registry:lib",
+          "target": "components/resolve-tween.ts"
+        },
+        {
+          "path": "registry/default/stagger/use-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/use-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/stagger/profiles/types.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/types.ts"
+        },
+        {
+          "path": "registry/default/stagger/profiles/create-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/create-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/stagger/profiles/house.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/house.ts"
+        },
+        {
+          "path": "registry/default/motion-profile/motion-profile-provider.tsx",
+          "type": "registry:component",
+          "target": "components/motion-profile-provider.tsx"
+        },
+        {
+          "path": "registry/default/motion-profile/register-motion-eases.ts",
+          "type": "registry:lib",
+          "target": "components/register-motion-eases.ts"
+        },
+        {
+          "path": "registry/default/motion-profile/export-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/export-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/motion-profile/gsap-ease-names.ts",
+          "type": "registry:lib",
+          "target": "components/gsap-ease-names.ts"
+        }
+      ]
+    },
+    {
+      "name": "sticky-stack",
+      "type": "registry:component",
+      "title": "StickyStack",
+      "description": "GSAP ScrollTrigger sticky stack. Pin each item, recede previous layers, release the last item.",
+      "dependencies": [
+        "gsap",
+        "@gsap/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/sticky-stack/sticky-stack.tsx",
+          "type": "registry:component",
+          "target": "components/sticky-stack.tsx"
+        },
+        {
+          "path": "registry/default/sticky-stack/scroll/use-scroll-scene.ts",
+          "type": "registry:hook",
+          "target": "components/scroll/use-scroll-scene.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/scroll/use-scroll-refresh.ts",
+          "type": "registry:hook",
+          "target": "components/scroll/use-scroll-refresh.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/scroll/scroll-breakpoints.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-breakpoints.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/scroll/scroll-debug.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-debug.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/scroll/scroll-types.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-types.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/scroll/scroll-options.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-options.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/gsap.ts",
+          "type": "registry:lib",
+          "target": "components/gsap.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/use-scoped-gsap.ts",
+          "type": "registry:hook",
+          "target": "components/use-scoped-gsap.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/clamp.ts",
+          "type": "registry:lib",
+          "target": "components/clamp.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        }
+      ]
+    },
+    {
+      "name": "horizontal-gallery",
+      "type": "registry:component",
+      "title": "HorizontalGallery",
+      "description": "GSAP ScrollTrigger horizontal gallery. Measure the track, pin the wrapper, translate by real overflow.",
+      "dependencies": [
+        "gsap",
+        "@gsap/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/horizontal-gallery/horizontal-gallery.tsx",
+          "type": "registry:component",
+          "target": "components/horizontal-gallery.tsx"
+        },
+        {
+          "path": "registry/default/horizontal-gallery/scroll/use-scroll-scene.ts",
+          "type": "registry:hook",
+          "target": "components/scroll/use-scroll-scene.ts"
+        },
+        {
+          "path": "registry/default/horizontal-gallery/scroll/use-scroll-refresh.ts",
+          "type": "registry:hook",
+          "target": "components/scroll/use-scroll-refresh.ts"
+        },
+        {
+          "path": "registry/default/horizontal-gallery/scroll/scroll-breakpoints.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-breakpoints.ts"
+        },
+        {
+          "path": "registry/default/horizontal-gallery/scroll/scroll-debug.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-debug.ts"
+        },
+        {
+          "path": "registry/default/horizontal-gallery/scroll/scroll-types.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-types.ts"
+        },
+        {
+          "path": "registry/default/horizontal-gallery/scroll/scroll-options.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-options.ts"
+        },
+        {
+          "path": "registry/default/horizontal-gallery/gsap.ts",
+          "type": "registry:lib",
+          "target": "components/gsap.ts"
+        },
+        {
+          "path": "registry/default/horizontal-gallery/use-scoped-gsap.ts",
+          "type": "registry:hook",
+          "target": "components/use-scoped-gsap.ts"
+        },
+        {
+          "path": "registry/default/horizontal-gallery/clamp.ts",
+          "type": "registry:lib",
+          "target": "components/clamp.ts"
+        },
+        {
+          "path": "registry/default/horizontal-gallery/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        }
+      ]
+    },
+    {
+      "name": "pinned-story",
+      "type": "registry:component",
+      "title": "PinnedStory",
+      "description": "GSAP ScrollTrigger pinned story. Pin a project visual, expose discrete activeIndex and frame progress.",
+      "dependencies": [
+        "gsap",
+        "@gsap/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/pinned-story/pinned-story.tsx",
+          "type": "registry:component",
+          "target": "components/pinned-story.tsx"
+        },
+        {
+          "path": "registry/default/pinned-story/scroll/use-scroll-scene.ts",
+          "type": "registry:hook",
+          "target": "components/scroll/use-scroll-scene.ts"
+        },
+        {
+          "path": "registry/default/pinned-story/scroll/use-scroll-refresh.ts",
+          "type": "registry:hook",
+          "target": "components/scroll/use-scroll-refresh.ts"
+        },
+        {
+          "path": "registry/default/pinned-story/scroll/scroll-breakpoints.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-breakpoints.ts"
+        },
+        {
+          "path": "registry/default/pinned-story/scroll/scroll-debug.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-debug.ts"
+        },
+        {
+          "path": "registry/default/pinned-story/scroll/scroll-types.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-types.ts"
+        },
+        {
+          "path": "registry/default/pinned-story/scroll/scroll-options.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-options.ts"
+        },
+        {
+          "path": "registry/default/pinned-story/gsap.ts",
+          "type": "registry:lib",
+          "target": "components/gsap.ts"
+        },
+        {
+          "path": "registry/default/pinned-story/use-scoped-gsap.ts",
+          "type": "registry:hook",
+          "target": "components/use-scoped-gsap.ts"
+        },
+        {
+          "path": "registry/default/pinned-story/clamp.ts",
+          "type": "registry:lib",
+          "target": "components/clamp.ts"
+        },
+        {
+          "path": "registry/default/pinned-story/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        }
+      ]
+    },
+    {
+      "name": "scroll-storytelling",
+      "type": "registry:block",
+      "title": "Scroll storytelling",
+      "description": "Installs StickyStack, HorizontalGallery, and PinnedStory. Not part of motion-foundations.",
+      "dependencies": [
+        "gsap",
+        "@gsap/react",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/sticky-stack/sticky-stack.tsx",
+          "type": "registry:component",
+          "target": "components/sticky-stack.tsx"
+        },
+        {
+          "path": "registry/default/horizontal-gallery/horizontal-gallery.tsx",
+          "type": "registry:component",
+          "target": "components/horizontal-gallery.tsx"
+        },
+        {
+          "path": "registry/default/pinned-story/pinned-story.tsx",
+          "type": "registry:component",
+          "target": "components/pinned-story.tsx"
+        },
+        {
+          "path": "registry/default/sticky-stack/scroll/use-scroll-scene.ts",
+          "type": "registry:hook",
+          "target": "components/scroll/use-scroll-scene.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/scroll/use-scroll-refresh.ts",
+          "type": "registry:hook",
+          "target": "components/scroll/use-scroll-refresh.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/scroll/scroll-breakpoints.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-breakpoints.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/scroll/scroll-debug.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-debug.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/scroll/scroll-types.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-types.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/scroll/scroll-options.ts",
+          "type": "registry:lib",
+          "target": "components/scroll/scroll-options.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/gsap.ts",
+          "type": "registry:lib",
+          "target": "components/gsap.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/use-scoped-gsap.ts",
+          "type": "registry:hook",
+          "target": "components/use-scoped-gsap.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/clamp.ts",
+          "type": "registry:lib",
+          "target": "components/clamp.ts"
+        },
+        {
+          "path": "registry/default/sticky-stack/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        }
+      ]
+    },
+    {
+      "name": "project-config",
+      "type": "registry:lib",
+      "title": "Project config",
+      "description": "Typed production-site configuration with strict validation.",
+      "files": [
+        {
+          "path": "registry/default/project-config/lib/project-config.ts",
+          "type": "registry:lib",
+          "target": "lib/project-config.ts"
+        }
+      ]
+    },
+    {
+      "name": "project-providers",
+      "type": "registry:component",
+      "title": "Project providers",
+      "description": "Single client boundary composing motion, optional Lenis, and optional route transitions.",
+      "dependencies": [
+        "motion",
+        "gsap",
+        "@gsap/react",
+        "lenis"
+      ],
+      "files": [
+        {
+          "path": "registry/default/project-providers/project-providers.tsx",
+          "type": "registry:component",
+          "target": "components/project-providers.tsx"
+        },
+        {
+          "path": "registry/default/project-providers/route-transition-provider.tsx",
+          "type": "registry:component",
+          "target": "components/route-transition-provider.tsx"
+        },
+        {
+          "path": "registry/default/project-providers/route-transition-types.ts",
+          "type": "registry:lib",
+          "target": "components/route-transition-types.ts"
+        },
+        {
+          "path": "registry/default/project-providers/use-route-transition.ts",
+          "type": "registry:hook",
+          "target": "components/use-route-transition.ts"
+        },
+        {
+          "path": "registry/default/project-providers/motion-provider.tsx",
+          "type": "registry:component",
+          "target": "components/motion-provider.tsx"
+        },
+        {
+          "path": "registry/default/project-providers/motion-profile-provider.tsx",
+          "type": "registry:component",
+          "target": "components/motion-profile-provider.tsx"
+        },
+        {
+          "path": "registry/default/project-providers/register-motion-eases.ts",
+          "type": "registry:lib",
+          "target": "components/register-motion-eases.ts"
+        },
+        {
+          "path": "registry/default/project-providers/export-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/export-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/project-providers/gsap-ease-names.ts",
+          "type": "registry:lib",
+          "target": "components/gsap-ease-names.ts"
+        },
+        {
+          "path": "registry/default/project-providers/gsap.ts",
+          "type": "registry:lib",
+          "target": "components/gsap.ts"
+        },
+        {
+          "path": "registry/default/project-providers/smooth-scroll-provider.tsx",
+          "type": "registry:component",
+          "target": "components/smooth-scroll-provider.tsx"
+        },
+        {
+          "path": "registry/default/project-providers/use-smooth-scroll.ts",
+          "type": "registry:hook",
+          "target": "components/use-smooth-scroll.ts"
+        },
+        {
+          "path": "registry/default/project-providers/smooth-scroll-options.ts",
+          "type": "registry:lib",
+          "target": "components/smooth-scroll-options.ts"
+        },
+        {
+          "path": "registry/default/project-providers/smooth-scroll-sync.ts",
+          "type": "registry:lib",
+          "target": "components/smooth-scroll-sync.ts"
+        },
+        {
+          "path": "registry/default/project-providers/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        },
+        {
+          "path": "registry/default/project-providers/reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/reduced-motion.ts"
+        },
+        {
+          "path": "registry/default/project-providers/resolve-tween.ts",
+          "type": "registry:lib",
+          "target": "components/resolve-tween.ts"
+        },
+        {
+          "path": "registry/default/project-providers/use-motion-profile.ts",
+          "type": "registry:hook",
+          "target": "components/use-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/project-providers/profiles/types.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/types.ts"
+        },
+        {
+          "path": "registry/default/project-providers/profiles/create-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/create-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/project-providers/profiles/house.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/house.ts"
+        }
+      ]
+    },
+    {
+      "name": "site-navigation",
+      "type": "registry:component",
+      "title": "Site navigation",
+      "description": "Accessible skip link, header, desktop and mobile navigation, and TransitionLink.",
+      "dependencies": [
+        "@phosphor-icons/react",
+        "@radix-ui/react-dialog"
+      ],
+      "files": [
+        {
+          "path": "registry/default/site-navigation/skip-link.tsx",
+          "type": "registry:component",
+          "target": "components/skip-link.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/main-content.tsx",
+          "type": "registry:component",
+          "target": "components/main-content.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/site-header.tsx",
+          "type": "registry:component",
+          "target": "components/site-header.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/desktop-navigation.tsx",
+          "type": "registry:component",
+          "target": "components/desktop-navigation.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/mobile-navigation.tsx",
+          "type": "registry:component",
+          "target": "components/mobile-navigation.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/navigation-toggle.tsx",
+          "type": "registry:component",
+          "target": "components/navigation-toggle.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/transition-link.tsx",
+          "type": "registry:component",
+          "target": "components/transition-link.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/navigation-types.ts",
+          "type": "registry:lib",
+          "target": "components/navigation-types.ts"
+        },
+        {
+          "path": "registry/default/site-navigation/classify-navigation.ts",
+          "type": "registry:lib",
+          "target": "components/classify-navigation.ts"
+        },
+        {
+          "path": "registry/default/site-navigation/use-route-transition.ts",
+          "type": "registry:hook",
+          "target": "components/use-route-transition.ts"
+        },
+        {
+          "path": "registry/default/site-navigation/route-transition-types.ts",
+          "type": "registry:lib",
+          "target": "components/route-transition-types.ts"
+        }
+      ]
+    },
+    {
+      "name": "responsive-media",
+      "type": "registry:component",
+      "title": "Responsive media",
+      "description": "Unopinionated image, video, frame, and intrinsic-ratio media primitives.",
+      "files": [
+        {
+          "path": "registry/default/responsive-media/responsive-image.tsx",
+          "type": "registry:component",
+          "target": "components/responsive-image.tsx"
+        },
+        {
+          "path": "registry/default/responsive-media/responsive-video.tsx",
+          "type": "registry:component",
+          "target": "components/responsive-video.tsx"
+        },
+        {
+          "path": "registry/default/responsive-media/media-frame.tsx",
+          "type": "registry:component",
+          "target": "components/media-frame.tsx"
+        },
+        {
+          "path": "registry/default/responsive-media/aspect-media.tsx",
+          "type": "registry:component",
+          "target": "components/aspect-media.tsx"
+        }
+      ]
+    },
+    {
+      "name": "seo-foundations",
+      "type": "registry:lib",
+      "title": "SEO foundations",
+      "description": "Metadata, canonical URL, Open Graph, sitemap, robots, JSON-LD, and error foundations.",
+      "files": [
+        {
+          "path": "registry/default/seo-foundations/lib/seo.ts",
+          "type": "registry:lib",
+          "target": "lib/seo.ts"
+        },
+        {
+          "path": "registry/default/seo-foundations/lib/project-config.ts",
+          "type": "registry:lib",
+          "target": "lib/project-config.ts"
+        },
+        {
+          "path": "registry/default/seo-foundations/not-found-foundation.tsx",
+          "type": "registry:component",
+          "target": "components/not-found-foundation.tsx"
+        },
+        {
+          "path": "registry/default/seo-foundations/error-foundation.tsx",
+          "type": "registry:component",
+          "target": "components/error-foundation.tsx"
+        }
+      ]
+    },
+    {
+      "name": "route-transitions",
+      "type": "registry:component",
+      "title": "Route transitions",
+      "description": "Optional overlay navigation controller. The project owns overlay visuals.",
+      "dependencies": [
+        "gsap",
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/default/route-transitions/route-transition-provider.tsx",
+          "type": "registry:component",
+          "target": "components/route-transition-provider.tsx"
+        },
+        {
+          "path": "registry/default/route-transitions/route-transition-types.ts",
+          "type": "registry:lib",
+          "target": "components/route-transition-types.ts"
+        },
+        {
+          "path": "registry/default/route-transitions/use-route-transition.ts",
+          "type": "registry:hook",
+          "target": "components/use-route-transition.ts"
+        },
+        {
+          "path": "registry/default/route-transitions/classify-navigation.ts",
+          "type": "registry:lib",
+          "target": "components/classify-navigation.ts"
+        },
+        {
+          "path": "registry/default/route-transitions/gsap.ts",
+          "type": "registry:lib",
+          "target": "components/gsap.ts"
+        },
+        {
+          "path": "registry/default/route-transitions/use-smooth-scroll.ts",
+          "type": "registry:hook",
+          "target": "components/use-smooth-scroll.ts"
+        },
+        {
+          "path": "registry/default/route-transitions/smooth-scroll-options.ts",
+          "type": "registry:lib",
+          "target": "components/smooth-scroll-options.ts"
+        },
+        {
+          "path": "registry/default/route-transitions/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        },
+        {
+          "path": "registry/default/route-transitions/reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/reduced-motion.ts"
+        }
+      ]
+    },
+    {
+      "name": "production-shell",
+      "type": "registry:block",
+      "title": "Production shell",
+      "description": "Project configuration, providers, navigation, media, SEO, and route transitions.",
+      "files": [
+        {
+          "path": "registry/default/project-config/lib/project-config.ts",
+          "type": "registry:lib",
+          "target": "lib/project-config.ts"
+        },
+        {
+          "path": "registry/default/project-providers/project-providers.tsx",
+          "type": "registry:component",
+          "target": "components/project-providers.tsx"
+        },
+        {
+          "path": "registry/default/project-providers/route-transition-provider.tsx",
+          "type": "registry:component",
+          "target": "components/route-transition-provider.tsx"
+        },
+        {
+          "path": "registry/default/project-providers/route-transition-types.ts",
+          "type": "registry:lib",
+          "target": "components/route-transition-types.ts"
+        },
+        {
+          "path": "registry/default/project-providers/use-route-transition.ts",
+          "type": "registry:hook",
+          "target": "components/use-route-transition.ts"
+        },
+        {
+          "path": "registry/default/project-providers/motion-provider.tsx",
+          "type": "registry:component",
+          "target": "components/motion-provider.tsx"
+        },
+        {
+          "path": "registry/default/project-providers/motion-profile-provider.tsx",
+          "type": "registry:component",
+          "target": "components/motion-profile-provider.tsx"
+        },
+        {
+          "path": "registry/default/project-providers/register-motion-eases.ts",
+          "type": "registry:lib",
+          "target": "components/register-motion-eases.ts"
+        },
+        {
+          "path": "registry/default/project-providers/export-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/export-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/project-providers/gsap-ease-names.ts",
+          "type": "registry:lib",
+          "target": "components/gsap-ease-names.ts"
+        },
+        {
+          "path": "registry/default/project-providers/gsap.ts",
+          "type": "registry:lib",
+          "target": "components/gsap.ts"
+        },
+        {
+          "path": "registry/default/project-providers/smooth-scroll-provider.tsx",
+          "type": "registry:component",
+          "target": "components/smooth-scroll-provider.tsx"
+        },
+        {
+          "path": "registry/default/project-providers/use-smooth-scroll.ts",
+          "type": "registry:hook",
+          "target": "components/use-smooth-scroll.ts"
+        },
+        {
+          "path": "registry/default/project-providers/smooth-scroll-options.ts",
+          "type": "registry:lib",
+          "target": "components/smooth-scroll-options.ts"
+        },
+        {
+          "path": "registry/default/project-providers/smooth-scroll-sync.ts",
+          "type": "registry:lib",
+          "target": "components/smooth-scroll-sync.ts"
+        },
+        {
+          "path": "registry/default/project-providers/motion-policy.ts",
+          "type": "registry:lib",
+          "target": "components/motion-policy.ts"
+        },
+        {
+          "path": "registry/default/project-providers/reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/reduced-motion.ts"
+        },
+        {
+          "path": "registry/default/project-providers/resolve-tween.ts",
+          "type": "registry:lib",
+          "target": "components/resolve-tween.ts"
+        },
+        {
+          "path": "registry/default/project-providers/use-motion-profile.ts",
+          "type": "registry:hook",
+          "target": "components/use-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/project-providers/profiles/types.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/types.ts"
+        },
+        {
+          "path": "registry/default/project-providers/profiles/create-motion-profile.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/create-motion-profile.ts"
+        },
+        {
+          "path": "registry/default/project-providers/profiles/house.ts",
+          "type": "registry:lib",
+          "target": "components/profiles/house.ts"
+        },
+        {
+          "path": "registry/default/site-navigation/skip-link.tsx",
+          "type": "registry:component",
+          "target": "components/skip-link.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/main-content.tsx",
+          "type": "registry:component",
+          "target": "components/main-content.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/site-header.tsx",
+          "type": "registry:component",
+          "target": "components/site-header.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/desktop-navigation.tsx",
+          "type": "registry:component",
+          "target": "components/desktop-navigation.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/mobile-navigation.tsx",
+          "type": "registry:component",
+          "target": "components/mobile-navigation.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/navigation-toggle.tsx",
+          "type": "registry:component",
+          "target": "components/navigation-toggle.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/transition-link.tsx",
+          "type": "registry:component",
+          "target": "components/transition-link.tsx"
+        },
+        {
+          "path": "registry/default/site-navigation/navigation-types.ts",
+          "type": "registry:lib",
+          "target": "components/navigation-types.ts"
+        },
+        {
+          "path": "registry/default/site-navigation/classify-navigation.ts",
+          "type": "registry:lib",
+          "target": "components/classify-navigation.ts"
+        },
+        {
+          "path": "registry/default/responsive-media/responsive-image.tsx",
+          "type": "registry:component",
+          "target": "components/responsive-image.tsx"
+        },
+        {
+          "path": "registry/default/responsive-media/responsive-video.tsx",
+          "type": "registry:component",
+          "target": "components/responsive-video.tsx"
+        },
+        {
+          "path": "registry/default/responsive-media/media-frame.tsx",
+          "type": "registry:component",
+          "target": "components/media-frame.tsx"
+        },
+        {
+          "path": "registry/default/responsive-media/aspect-media.tsx",
+          "type": "registry:component",
+          "target": "components/aspect-media.tsx"
+        },
+        {
+          "path": "registry/default/seo-foundations/lib/seo.ts",
+          "type": "registry:lib",
+          "target": "lib/seo.ts"
+        },
+        {
+          "path": "registry/default/seo-foundations/not-found-foundation.tsx",
+          "type": "registry:component",
+          "target": "components/not-found-foundation.tsx"
+        },
+        {
+          "path": "registry/default/seo-foundations/error-foundation.tsx",
+          "type": "registry:component",
+          "target": "components/error-foundation.tsx"
+        }
+      ]
+    }
+  ]
+}

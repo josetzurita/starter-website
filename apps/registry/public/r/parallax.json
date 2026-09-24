@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "parallax",
+  "type": "registry:component",
+  "title": "Parallax",
+  "description": "Clamped scroll parallax via useScroll and useTransform. Motion owns transform.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/default/parallax/parallax.tsx",
+      "type": "registry:component",
+      "target": "components/parallax.tsx",
+      "content": "\"use client\";\n\nimport { MOTION_DEFAULTS, parallaxTravelPx } from \"./clamp\";\nimport { shouldEnableParallax } from \"./motion-policy\";\nimport {\n  motion,\n  useReducedMotion,\n  useScroll,\n  useTransform,\n} from \"motion/react\";\nimport {\n  useEffect,\n  useRef,\n  useState,\n  type ElementType,\n  type ReactNode,\n} from \"react\";\n\nfunction cn(...inputs: Array<string | undefined | false | null>) {\n  return inputs.filter(Boolean).join(\" \");\n}\n\n/**\n * Motion owns `transform` on this node. Do not tween the same element with GSAP\n * (ScrollTrigger or otherwise). Nested children may use a different engine only\n * if they do not animate transform or opacity on this wrapper.\n */\nexport type ParallaxProps = {\n  children: ReactNode;\n  className?: string;\n  as?: ElementType;\n  speed?: number;\n  disableBelow?: number;\n};\n\nexport function Parallax({\n  children,\n  className,\n  as = \"div\",\n  speed = MOTION_DEFAULTS.parallaxSpeed,\n  disableBelow,\n}: ParallaxProps) {\n  const reduce = useReducedMotion();\n  const Tag = as as ElementType;\n  const Component = motion.create(Tag);\n  const ref = useRef<HTMLElement | null>(null);\n  const [viewportWidth, setViewportWidth] = useState<number | null>(\n    disableBelow == null ? null : disableBelow,\n  );\n\n  useEffect(() => {\n    if (disableBelow == null) {\n      setViewportWidth(null);\n      return;\n    }\n    const media = window.matchMedia(\n      `(max-width: ${String(disableBelow - 1)}px)`,\n    );\n    const update = () => {\n      setViewportWidth(media.matches ? disableBelow - 1 : disableBelow);\n    };\n    update();\n    media.addEventListener(\"change\", update);\n    return () => {\n      media.removeEventListener(\"change\", update);\n    };\n  }, [disableBelow]);\n\n  const enabled = shouldEnableParallax({\n    reduce,\n    viewportWidth,\n    disableBelow,\n  });\n  const travel = enabled ? parallaxTravelPx(speed) : 0;\n  const { scrollYProgress } = useScroll({\n    target: ref,\n    offset: [\"start end\", \"end start\"],\n  });\n  const y = useTransform(scrollYProgress, [0, 1], [-travel, travel]);\n\n  return (\n    <Component ref={ref} className={cn(className)} style={{ y }}>\n      {children}\n    </Component>\n  );\n}\n"
+    },
+    {
+      "path": "registry/default/parallax/clamp.ts",
+      "type": "registry:lib",
+      "target": "components/clamp.ts",
+      "content": "export const MOTION_DEFAULTS = {\n  staggerInterval: 0.08,\n  staggerDelay: 0,\n  staggerAmount: 0.3,\n  staggerOnce: true,\n  staggerY: 16,\n  parallaxSpeed: 0.2,\n  parallaxSpeedMin: 0,\n  parallaxSpeedMax: 0.45,\n  parallaxRangePx: 72,\n  magneticStrength: 0.35,\n  magneticStrengthMin: 0,\n  magneticStrengthMax: 1,\n  magneticMaxOffset: 16,\n  magneticMaxOffsetMin: 0,\n  magneticMaxOffsetMax: 32,\n  imageScale: 1,\n  imageScaleMin: 1,\n  imageScaleMax: 1.08,\n  imageRevealY: 24,\n  ease: [0.16, 1, 0.3, 1] as const,\n  duration: 0.55,\n};\n\nexport function clamp(value: number, min: number, max: number): number {\n  return Math.min(max, Math.max(min, value));\n}\n\nexport function clampParallaxSpeed(speed: number): number {\n  return clamp(\n    speed,\n    MOTION_DEFAULTS.parallaxSpeedMin,\n    MOTION_DEFAULTS.parallaxSpeedMax,\n  );\n}\n\nexport function clampMagneticStrength(strength: number): number {\n  return clamp(\n    strength,\n    MOTION_DEFAULTS.magneticStrengthMin,\n    MOTION_DEFAULTS.magneticStrengthMax,\n  );\n}\n\nexport function clampMagneticOffset(offset: number): number {\n  return clamp(\n    offset,\n    MOTION_DEFAULTS.magneticMaxOffsetMin,\n    MOTION_DEFAULTS.magneticMaxOffsetMax,\n  );\n}\n\nexport function clampImageScale(scale: number): number {\n  return clamp(\n    scale,\n    MOTION_DEFAULTS.imageScaleMin,\n    MOTION_DEFAULTS.imageScaleMax,\n  );\n}\n\nexport function clampStaggerInterval(interval: number): number {\n  return clamp(interval, 0, 1);\n}\n\nexport function parallaxTravelPx(speed: number): number {\n  return clampParallaxSpeed(speed) * MOTION_DEFAULTS.parallaxRangePx;\n}\n"
+    },
+    {
+      "path": "registry/default/parallax/motion-policy.ts",
+      "type": "registry:lib",
+      "target": "components/motion-policy.ts",
+      "content": "export const FINE_POINTER_QUERY = \"(pointer: fine) and (hover: hover)\";\n\nexport function shouldAnimateMotion(\n  reduce: boolean | null | undefined,\n): boolean {\n  return !reduce;\n}\n\nexport function shouldEnableParallax(options: {\n  reduce: boolean | null | undefined;\n  viewportWidth: number | null;\n  disableBelow?: number;\n}): boolean {\n  if (!shouldAnimateMotion(options.reduce)) {\n    return false;\n  }\n  if (\n    options.disableBelow != null &&\n    options.viewportWidth != null &&\n    options.viewportWidth < options.disableBelow\n  ) {\n    return false;\n  }\n  return true;\n}\n\nexport function shouldEnableMagnetic(options: {\n  reduce: boolean | null | undefined;\n  finePointer: boolean;\n  pointerType?: string;\n}): boolean {\n  if (!shouldAnimateMotion(options.reduce)) {\n    return false;\n  }\n  if (!options.finePointer) {\n    return false;\n  }\n  if (\n    options.pointerType &&\n    options.pointerType !== \"mouse\" &&\n    options.pointerType !== \"pen\"\n  ) {\n    return false;\n  }\n  return true;\n}\n\nexport function shouldEnablePointerAccent(options: {\n  enabled: boolean;\n  reduce: boolean | null | undefined;\n  finePointer: boolean;\n  pointerType?: string;\n}): boolean {\n  if (!options.enabled) {\n    return false;\n  }\n  return shouldEnableMagnetic({\n    reduce: options.reduce,\n    finePointer: options.finePointer,\n    pointerType: options.pointerType,\n  });\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "cds",
+  "private": true,
+  "packageManager": "pnpm@10.15.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test && node scripts/prove-registry-install.mjs && node scripts/prove-create-site.mjs",
+    "prove:registry": "node scripts/prove-registry-install.mjs",
+    "prove:sites": "node scripts/prove-create-site.mjs",
+    "create:site": "pnpm --filter @cds/project create-site"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.6",
+    "typescript": "^5.8.3"
+  }
+}

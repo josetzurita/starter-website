@@ -1,0 +1,79 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "site-navigation",
+  "type": "registry:component",
+  "title": "Site navigation",
+  "description": "Accessible skip link, header, desktop and mobile navigation, and TransitionLink.",
+  "dependencies": [
+    "@phosphor-icons/react",
+    "@radix-ui/react-dialog"
+  ],
+  "files": [
+    {
+      "path": "registry/default/site-navigation/skip-link.tsx",
+      "type": "registry:component",
+      "target": "components/skip-link.tsx",
+      "content": "function cn(...inputs: Array<string | undefined | false | null>) {\n  return inputs.filter(Boolean).join(\" \");\n}\n\nimport type { AnchorHTMLAttributes } from \"react\";\nimport { MAIN_CONTENT_ID } from \"./route-transition-types\";\n\nexport function SkipLink({\n  className,\n  children = \"Skip to content\",\n  ...props\n}: AnchorHTMLAttributes<HTMLAnchorElement>) {\n  return (\n    <a\n      href={`#${MAIN_CONTENT_ID}`}\n      className={cn(\n        \"sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:bg-surface focus:px-3 focus:py-2 focus:text-sm\",\n        className,\n      )}\n      style={{ zIndex: \"var(--z-dialog)\" }}\n      {...props}\n    >\n      {children}\n    </a>\n  );\n}\n"
+    },
+    {
+      "path": "registry/default/site-navigation/main-content.tsx",
+      "type": "registry:component",
+      "target": "components/main-content.tsx",
+      "content": "function cn(...inputs: Array<string | undefined | false | null>) {\n  return inputs.filter(Boolean).join(\" \");\n}\n\nimport type { HTMLAttributes } from \"react\";\nimport { MAIN_CONTENT_ID } from \"./route-transition-types\";\n\nexport function MainContent({\n  className,\n  children,\n  ...props\n}: HTMLAttributes<HTMLElement>) {\n  return (\n    <main\n      id={MAIN_CONTENT_ID}\n      tabIndex={-1}\n      className={cn(\"outline-none\", className)}\n      {...props}\n    >\n      {children}\n    </main>\n  );\n}\n"
+    },
+    {
+      "path": "registry/default/site-navigation/site-header.tsx",
+      "type": "registry:component",
+      "target": "components/site-header.tsx",
+      "content": "\"use client\";\n\nfunction cn(...inputs: Array<string | undefined | false | null>) {\n  return inputs.filter(Boolean).join(\" \");\n}\n\nimport { useState, type ReactNode } from \"react\";\nimport { DesktopNavigation } from \"./transition-link\";\nimport { MobileNavigation } from \"./mobile-navigation\";\nimport { NavigationToggle } from \"./navigation-toggle\";\nimport type { SiteNavItem } from \"./navigation-types\";\n\nexport function SiteHeader({\n  brand,\n  items,\n  className,\n}: {\n  brand: ReactNode;\n  items: SiteNavItem[];\n  className?: string;\n}) {\n  const [open, setOpen] = useState(false);\n\n  return (\n    <header\n      className={cn(\n        \"sticky top-0 flex h-14 items-center justify-between gap-6 border-b border-border bg-background px-4\",\n        className,\n      )}\n      style={{ zIndex: \"var(--z-sticky)\" }}\n    >\n      <div className=\"min-w-0 shrink\">{brand}</div>\n      <DesktopNavigation items={items} />\n      <NavigationToggle open={open} onClick={() => setOpen((value) => !value)} />\n      <MobileNavigation items={items} open={open} onOpenChange={setOpen} />\n    </header>\n  );\n}\n"
+    },
+    {
+      "path": "registry/default/site-navigation/desktop-navigation.tsx",
+      "type": "registry:component",
+      "target": "components/desktop-navigation.tsx",
+      "content": "\"use client\";\n\nexport { DesktopNavigation, TransitionLink } from \"./transition-link\";\nexport type { TransitionLinkProps } from \"./transition-link\";\n"
+    },
+    {
+      "path": "registry/default/site-navigation/mobile-navigation.tsx",
+      "type": "registry:component",
+      "target": "components/mobile-navigation.tsx",
+      "content": "\"use client\";\n\nimport * as Dialog from \"@radix-ui/react-dialog\";\nimport { usePathname } from \"next/navigation\";\nimport { TransitionLink } from \"./transition-link\";\nimport type { SiteNavItem } from \"./navigation-types\";\n\nexport function MobileNavigation({\n  items,\n  open,\n  onOpenChange,\n}: {\n  items: SiteNavItem[];\n  open: boolean;\n  onOpenChange: (open: boolean) => void;\n}) {\n  const pathname = usePathname();\n  return (\n    <Dialog.Root open={open} onOpenChange={onOpenChange}>\n      <Dialog.Portal>\n        <Dialog.Overlay\n          className=\"fixed inset-0 bg-foreground/40 md:hidden\"\n          style={{ zIndex: \"var(--z-overlay)\" }}\n        />\n        <Dialog.Content\n          id=\"mobile-navigation\"\n          data-lenis-prevent=\"\"\n          aria-describedby={undefined}\n          className=\"fixed inset-y-0 right-0 flex w-[min(100%,20rem)] flex-col gap-4 overflow-y-auto border-l border-border bg-surface p-6 md:hidden\"\n          style={{ zIndex: \"var(--z-dialog)\" }}\n        >\n          <Dialog.Title className=\"text-sm font-medium\">Navigation</Dialog.Title>\n          <ul className=\"grid gap-2\">\n            {items.map((item) => {\n              const current = pathname === item.href;\n              return (\n                <li key={item.href}>\n                  <TransitionLink\n                    href={item.href}\n                    aria-current={current ? \"page\" : undefined}\n                    onClick={() => onOpenChange(false)}\n                    className=\"block py-2 text-base\"\n                  >\n                    {item.label}\n                  </TransitionLink>\n                </li>\n              );\n            })}\n          </ul>\n        </Dialog.Content>\n      </Dialog.Portal>\n    </Dialog.Root>\n  );\n}\n"
+    },
+    {
+      "path": "registry/default/site-navigation/navigation-toggle.tsx",
+      "type": "registry:component",
+      "target": "components/navigation-toggle.tsx",
+      "content": "\"use client\";\n\nimport { List, X } from \"@phosphor-icons/react\";\nimport type { ButtonHTMLAttributes } from \"react\";\n\nexport function NavigationToggle({\n  open,\n  ...props\n}: ButtonHTMLAttributes<HTMLButtonElement> & { open?: boolean }) {\n  return (\n    <button\n      type=\"button\"\n      aria-expanded={open}\n      aria-controls=\"mobile-navigation\"\n      className=\"inline-flex size-10 items-center justify-center rounded-[var(--radius-sm)] border border-border md:hidden\"\n      {...props}\n    >\n      <span className=\"sr-only\">{open ? \"Close navigation\" : \"Open navigation\"}</span>\n      {open ? <X weight=\"bold\" className=\"size-4\" /> : <List weight=\"bold\" className=\"size-4\" />}\n    </button>\n  );\n}\n"
+    },
+    {
+      "path": "registry/default/site-navigation/transition-link.tsx",
+      "type": "registry:component",
+      "target": "components/transition-link.tsx",
+      "content": "\"use client\";\n\nfunction cn(...inputs: Array<string | undefined | false | null>) {\n  return inputs.filter(Boolean).join(\" \");\n}\n\nimport Link from \"next/link\";\nimport { usePathname } from \"next/navigation\";\nimport type { ComponentProps } from \"react\";\nimport { classifyNavigation, shouldInterceptNavigation } from \"./classify-navigation\";\nimport type { SiteNavItem } from \"./navigation-types\";\nimport { useRouteTransition } from \"./use-route-transition\";\n\nexport type TransitionLinkProps = ComponentProps<typeof Link> & {\n  href: string;\n};\n\nexport function TransitionLink({\n  href,\n  onClick,\n  target,\n  download,\n  className,\n  children,\n  ...props\n}: TransitionLinkProps) {\n  const pathname = usePathname();\n  const transition = useRouteTransition();\n  const hrefValue = href;\n\n  return (\n    <Link\n      href={href}\n      target={target}\n      download={download}\n      className={className}\n      onClick={(event) => {\n        onClick?.(event);\n        if (event.defaultPrevented) {\n          return;\n        }\n        const kind = classifyNavigation({\n          href: hrefValue,\n          currentPathname: pathname,\n          target: typeof target === \"string\" ? target : undefined,\n          download: Boolean(download),\n          metaKey: event.metaKey,\n          ctrlKey: event.ctrlKey,\n          shiftKey: event.shiftKey,\n          altKey: event.altKey,\n          button: event.button,\n        });\n        if (!shouldInterceptNavigation(kind)) {\n          return;\n        }\n        if (transition.reducedMotion) {\n          event.preventDefault();\n          transition.navigate(hrefValue);\n          return;\n        }\n        if (!transition.enabled) {\n          return;\n        }\n        event.preventDefault();\n        transition.navigate(hrefValue);\n      }}\n      {...props}\n    >\n      {children}\n    </Link>\n  );\n}\n\nexport function DesktopNavigation({\n  items,\n  className,\n}: {\n  items: SiteNavItem[];\n  className?: string;\n}) {\n  const pathname = usePathname();\n  return (\n    <nav aria-label=\"Primary\" className={cn(\"hidden min-w-0 md:block\", className)}>\n      <ul className=\"flex flex-nowrap items-center gap-6 overflow-x-auto\">\n        {items.map((item) => {\n          const current = pathname === item.href;\n          return (\n            <li key={item.href} className=\"shrink-0\">\n              <TransitionLink\n                href={item.href}\n                aria-current={current ? \"page\" : undefined}\n                className={cn(\n                  \"whitespace-nowrap text-sm\",\n                  current ? \"text-foreground\" : \"text-foreground/70\",\n                )}\n              >\n                {item.label}\n              </TransitionLink>\n            </li>\n          );\n        })}\n      </ul>\n    </nav>\n  );\n}\n"
+    },
+    {
+      "path": "registry/default/site-navigation/navigation-types.ts",
+      "type": "registry:lib",
+      "target": "components/navigation-types.ts",
+      "content": "export type SiteNavItem = {\n  href: string;\n  label: string;\n};\n"
+    },
+    {
+      "path": "registry/default/site-navigation/classify-navigation.ts",
+      "type": "registry:lib",
+      "target": "components/classify-navigation.ts",
+      "content": "export type NavigationKind =\n  | \"internal\"\n  | \"hash\"\n  | \"external\"\n  | \"download\"\n  | \"new-tab\"\n  | \"modified\";\n\nexport type ClassifyNavigationInput = {\n  href: string;\n  currentPathname: string;\n  target?: string | null;\n  download?: boolean;\n  metaKey?: boolean;\n  ctrlKey?: boolean;\n  shiftKey?: boolean;\n  altKey?: boolean;\n  button?: number;\n};\n\nexport function classifyNavigation(input: ClassifyNavigationInput): NavigationKind {\n  if (input.button != null && input.button !== 0) {\n    return \"modified\";\n  }\n  if (input.metaKey || input.ctrlKey || input.shiftKey || input.altKey) {\n    return \"modified\";\n  }\n  if (input.download) {\n    return \"download\";\n  }\n  if (input.target === \"_blank\") {\n    return \"new-tab\";\n  }\n\n  const href = input.href.trim();\n  if (!href || href === \"#\") {\n    return \"hash\";\n  }\n  if (\n    href.startsWith(\"mailto:\") ||\n    href.startsWith(\"tel:\") ||\n    href.startsWith(\"sms:\")\n  ) {\n    return \"external\";\n  }\n\n  if (href.startsWith(\"//\")) {\n    return \"external\";\n  }\n  try {\n    const url = new URL(href, \"http://cds.local\");\n    if (url.protocol === \"http:\" || url.protocol === \"https:\") {\n      const isAbsolute = /^https?:\\/\\//i.test(href);\n      if (isAbsolute) {\n        return \"external\";\n      }\n    }\n    if (href.startsWith(\"#\") || (url.pathname === input.currentPathname && url.hash)) {\n      return \"hash\";\n    }\n    return \"internal\";\n  } catch {\n    return \"external\";\n  }\n}\n\nexport function shouldInterceptNavigation(kind: NavigationKind): boolean {\n  return kind === \"internal\";\n}\n"
+    },
+    {
+      "path": "registry/default/site-navigation/use-route-transition.ts",
+      "type": "registry:hook",
+      "target": "components/use-route-transition.ts",
+      "content": "\"use client\";\n\nimport { createContext, useContext } from \"react\";\nimport type { RouteTransitionState } from \"./route-transition-types\";\n\nexport type RouteTransitionApi = RouteTransitionState & {\n  navigate: (href: string) => void;\n  fail: () => void;\n};\n\nexport const RouteTransitionContext = createContext<RouteTransitionApi | null>(null);\n\nexport function useRouteTransition(): RouteTransitionApi {\n  const value = useContext(RouteTransitionContext);\n  if (!value) {\n    return {\n      phase: \"idle\",\n      href: null,\n      enabled: false,\n      reducedMotion: false,\n      navigate: (href: string) => {\n        window.location.assign(href);\n      },\n      fail: () => undefined,\n    };\n  }\n  return value;\n}\n"
+    },
+    {
+      "path": "registry/default/site-navigation/route-transition-types.ts",
+      "type": "registry:lib",
+      "target": "components/route-transition-types.ts",
+      "content": "import type { ReactNode } from \"react\";\n\nexport type RouteTransitionPhase = \"idle\" | \"covering\" | \"waiting\" | \"revealing\";\n\nexport type RouteTransitionState = {\n  phase: RouteTransitionPhase;\n  href: string | null;\n  enabled: boolean;\n  reducedMotion: boolean;\n};\n\nexport type RouteTransitionRenderOverlay = (state: RouteTransitionState) => ReactNode;\n\nexport const ROUTE_TRANSITION_TIMEOUT_MS = 8000;\nexport const ROUTE_TRANSITION_COVER_MS = 280;\nexport const MAIN_CONTENT_ID = \"main-content\";\n"
+    }
+  ]
+}
